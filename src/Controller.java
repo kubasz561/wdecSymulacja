@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 public class Controller {
     private Model theModel;
     private View theView;
+    private String databasePath = "D:\\Studia\\PW\\WDEC\\SYM\\wdecSymulacja\\db.csv";
 
     public Controller(Model theModel, View theView){
         this.theModel = theModel;
@@ -17,10 +18,11 @@ public class Controller {
     class SaveMoneyButtonListener implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
-            theModel.readCSV("C:\\Users\\HP\\IdeaProjects\\wdecSymulacja\\csv.csv");
+            theModel.importDatabase(databasePath);
             theModel.setStartingMoney(theView.getMoneyInput());
             System.out.println("Piniondz: " + theModel.getStartingMoney());
-            theModel.printLoadedCSV();
+            //theModel.printDatabase();
+            System.out.println(theModel.decide());
         }
     }
 
